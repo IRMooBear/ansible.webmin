@@ -30,7 +30,7 @@ galaxy_info:
   #github_branch:
 
   platforms:
-    Debian:
+    - name: Debian
       versions:
         - stretch
 
