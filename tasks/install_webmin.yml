@@ -1,0 +1,19 @@
+---
+- name: download webmin
+  get_url:
+    url: "{{ webmin_source_url }}/{{ webmin_name }}"
+    dest: /usr/local/src/{{ webmin_name }}
+    checksum: "{{ webmin_checksum }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0755
+- wait_for:
+    path: /usr/local/src/{{ webmin_name }}
+- include: Debian.yml
+  when: ansible_os_family == 'Debian'
+- include: RedHat.yml
+  when: ansible_os_family == 'RedHat'
+- name: wait for webmin to start
+  wait_for:
+    host: 127.0.0.1
+    port: 10000

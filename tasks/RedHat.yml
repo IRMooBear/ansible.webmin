@@ -1,0 +1,10 @@
+---
+- name: install webmin dependencies
+  yum:
+    name: perl-Net-SSLeay
+    state: present
+    update_cache: true
+- name: install webmin
+  yum:
+    name: /usr/local/src/{{ webmin_name }}
+    state: present

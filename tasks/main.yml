@@ -1,0 +1,20 @@
+---
+# tasks file for install_webmin
+- name: check webmin already installed
+  stat:
+    path: /usr/local/src/{{ webmin_name }}
+  register: webmin_check
+- include: install_webmin.yml
+  when: not webmin_check.stat.exists
+- include: copy_ssl_certificate.yml
+  when: webmin_copy_ssl_certificate
+- name: set webmin to redirect non-ssl to ssl
+  lineinfile:
+    path: /etc/webmin/miniserv.conf
+    line: ssl_redirect=1
+  notify:
+    - restart webmin
+- name: set service webmin autostart
+  service:
+    name: webmin
+    enabled: "{{ webmin_autostart }}"

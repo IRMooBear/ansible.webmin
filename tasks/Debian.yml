@@ -1,0 +1,22 @@
+---
+- name: install webmin dependencies
+  apt:
+    state: present
+    name: [
+      'perl',
+      'python',
+      'openssl',
+      'libnet-ssleay-perl',
+      'libauthen-pam-perl',
+      'libpam-runtime',
+      'libio-pty-perl',
+      'apt-show-versions'
+    ]
+  register: result
+  retries: 3
+  delay: 10
+  until: not result.failed
+- name: install webmin
+  apt:
+    deb: /usr/local/src/{{ webmin_name }}
+    state: present

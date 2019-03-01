@@ -1,0 +1,23 @@
+---
+# defaults file for install_webmin
+webmin_source:
+  Debian:
+    source: https://prdownloads.sourceforge.net/webadmin/
+    version: "1.900"
+    name: webmin_1.900_all.deb
+    checksum: md5:8a8ab138819756ac37a75d51ee8edfe3
+  RedHat:
+    source: https://download.webmin.com/devel/rpm/
+    version: "1.903"
+    name: webmin-1.903-1.noarch.rpm
+    checksum:
+
+webmin_autostart: yes
+webmin_copy_ssl_certificate: no
+webmin_ssl_key:
+webmin_ssl_certificate:
+webmin_ssl_ca:
+webmin_source_url: "{{ webmin_source[ansible_os_family].source }}"
+webmin_version: "{{ webmin_source[ansible_os_family].version }}"
+webmin_name: "{{ webmin_source[ansible_os_family].name }}"
+webmin_checksum: "{{ webmin_source[ansible_os_family].checksum }}"

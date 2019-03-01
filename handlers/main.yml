@@ -1,0 +1,8 @@
+---
+# Handlers for install_webmin
+- name: restart webmin
+  service:
+    name: webmin
+    state: restarted
+  args:
+    warn: false

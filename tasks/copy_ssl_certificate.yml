@@ -1,0 +1,31 @@
+---
+- name: copy webmin ssl certificate key
+  copy:
+    src: "{{ webmin_ssl_key }}"
+    dest: /etc/webmin/miniserv.pem
+    group: bin
+    mode: 0600
+  notify:
+    - restart webmin
+- name: copy webmin ssl certificate
+  copy:
+    src: "{{ webmin_ssl_certificate }}"
+    dest: /etc/webmin/miniserv.cert
+    mode: 0644
+  notify:
+    - restart webmin
+- name: copy webmin ssl certificate CA chain
+  copy:
+    src: "{{ webmin_ssl_ca }}"
+    dest: /etc/webmin/miniserv.chain
+    mode: 0644
+  notify:
+    - restart webmin
+- name: add ssl configuration
+  blockinfile:
+    dest: /etc/webmin/miniserv.conf
+    block: |
+      certfile=/etc/webmin/miniserv.cert
+      extracas=/etc/webmin/miniserv.chain
+  notify:
+    - restart webmin
