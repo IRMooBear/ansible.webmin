@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: webmin
   author: Anh Nguyen
   description: Install install_webmin and copy custom SSL certificate files.
   company: N/A
