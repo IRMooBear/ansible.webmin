@@ -8,6 +8,25 @@
   when: not webmin_check.stat.exists
 - include: copy_ssl_certificate.yml
   when: webmin_copy_ssl_certificate
+- include: install_theme.yml
+  with_items:
+    - "{{ webmin_additional_themes }}"
+  when: webmin_additional_themes
+- name: set default webmin theme in config
+  lineinfile:
+    path: /etc/webmin/config
+    regexp: '^theme='
+    line: theme={{ webmin_theme }}
+  notify:
+    - restart webmin
+  when: webmin_theme
+- name: set default webmin theme in miniserv.conf
+  lineinfile:
+    path: /etc/webmin/miniserv.conf
+    regexp: '^preroot='
+    line: preroot={{ webmin_theme }}
+  notify:
+    - restart webmin
 - name: set webmin to redirect non-ssl to ssl
   lineinfile:
     path: /etc/webmin/miniserv.conf

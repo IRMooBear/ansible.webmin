@@ -1,0 +1,16 @@
+- name: check theme exists
+  stat:
+    path: /usr/share/webmin/{{ item.name }}
+  register: webmin_theme_check
+- name: download theme
+  unarchive:
+    dest: /usr/share/webmin/
+    src: "{{ item.url }}"
+    owner: root
+    group: root
+    remote_src: yes
+  register: webmin_theme_download
+  retries: 3
+  delay: 10
+  until: not webmin_theme_download.failed
+  when: not webmin_theme_check.stat.exists

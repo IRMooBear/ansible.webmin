@@ -12,6 +12,21 @@ webmin_source:
     name: webmin-1.903-1.noarch.rpm
     checksum:
 
+webmin_additional_themes:
+  -
+    name: bootstrap
+    filename: bootstrap.wbt.gz
+    url: http://theme.winfuture.it/bootstrap.wbt.gz
+  -
+    name: caldera
+    filename: caldera.wbt.gz
+    url: http://www.webmin.com/webmin/download/modules/caldera.wbt.gz
+  -
+    name: fkn_theme_0.6.0
+    filename: fkn-webmintheme.0.6.0.wbt.gz
+    url: http://www.fkn-systems.de/media/fkn-webmintheme.0.6.0.wbt.gz
+
+webmin_theme: bootstrap
 webmin_autostart: yes
 webmin_copy_ssl_certificate: no
 webmin_ssl_key:

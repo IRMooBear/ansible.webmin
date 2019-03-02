@@ -4,5 +4,3 @@
   service:
     name: webmin
     state: restarted
-  args:
-    warn: false

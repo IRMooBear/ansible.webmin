@@ -5,6 +5,8 @@ Install Webmin
 
 Install Webmin and copy SSL certificates so browsers doesn't complain all the time.
 
+This role automatically download, install and select the Bootstrap theme for webmin for lighter interface.
+
 Requirements
 ------------
 Have your own SSL certificate files ready?
@@ -45,7 +47,16 @@ SSL Certificate file path.
 
     webmin_ssl_ca:
     
-SSL CA certificate and intermediate certificates chain file path.    
+SSL CA certificate and intermediate certificates chain file path.   
+
+    webmin_theme: bootstrap
+    webmin_additional_themes:
+      -
+        name: bootstrap
+        filename: bootstrap.wbt.gz
+        url: http://theme.winfuture.it/bootstrap.wbt.gz 
+        
+Download additional theme from the web and install it.  The variable webmin_theme will set default theme.        
   
 Example Playbook
 ----------------
