@@ -6,11 +6,13 @@ webmin_source:
     version: "1.900"
     name: webmin_1.900_all.deb
     checksum: md5:8a8ab138819756ac37a75d51ee8edfe3
+    install_dir: /usr/share/webmin/
   RedHat:
     source: https://download.webmin.com/devel/rpm/
     version: "1.903"
     name: webmin-1.903-1.noarch.rpm
     checksum:
+    install_dir: /usr/libexec/webmin/
 
 webmin_additional_themes:
   -

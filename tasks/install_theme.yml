@@ -1,10 +1,10 @@
 - name: check theme exists
   stat:
-    path: /usr/share/webmin/{{ item.name }}
+    path: "{{ webmin_source[ansible_os_family].install_dir}}{{ item.name }}"
   register: webmin_theme_check
 - name: download theme
   unarchive:
-    dest: /usr/share/webmin/
+    dest: "{{ webmin_source[ansible_os_family].install_dir}}"
     src: "{{ item.url }}"
     owner: root
     group: root

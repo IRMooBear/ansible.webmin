@@ -19,7 +19,7 @@
     line: theme={{ webmin_theme }}
   notify:
     - restart webmin
-  when: webmin_theme
+  when: webmin_theme != ""
 - name: set default webmin theme in miniserv.conf
   lineinfile:
     path: /etc/webmin/miniserv.conf
