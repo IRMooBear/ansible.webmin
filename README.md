@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/IRMooBear/install_webmin.svg?branch=master)](https://travis-ci.com/IRMooBear/install_webmin)
+[![Build Status](https://travis-ci.com/IRMooBear/ansible.webmin.svg?branch=master)](https://travis-ci.com/IRMooBear/ansible.webmin)
 
 Install Webmin
 =========
