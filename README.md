@@ -69,7 +69,7 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: servers
       roles:
          - { 
-         role: irmoobear.install_webmin, 
+         role: irmoobear.webmin, 
          webmin_copy_ssl_certificate: yes, 
          webmin_ssl_key: mykey.key,
          webmin_ssl_certificate: mycert.crt
