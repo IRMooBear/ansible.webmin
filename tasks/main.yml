@@ -9,8 +9,7 @@
 - include: copy_ssl_certificate.yml
   when: webmin_copy_ssl_certificate
 - include: install_theme.yml
-  with_items:
-    - "{{ webmin_additional_themes }}"
+  with_items: "{{ webmin_additional_themes }}"
   when: webmin_additional_themes
 - name: set default webmin theme in config
   lineinfile:
@@ -37,3 +36,5 @@
   service:
     name: webmin
     enabled: "{{ webmin_autostart }}"
+  notify:
+    - restart webmin

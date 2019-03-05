@@ -3,4 +3,4 @@
 - name: restart webmin
   service:
     name: webmin
-    state: restarted
+    state: "{{ 'restarted' if webmin_autostart else 'stopped' }}"
