@@ -4,13 +4,13 @@
   stat:
     path: /usr/local/src/{{ webmin_name }}
   register: webmin_check
-- include: install_webmin.yml
+- import_tasks: install_webmin.yml
   when: not webmin_check.stat.exists
-- include: copy_ssl_certificate.yml
+- import_tasks: copy_ssl_certificate.yml
   when: webmin_copy_ssl_certificate
-- include: install_theme.yml
+- include_tasks: install_theme.yml
   with_items: "{{ webmin_additional_themes }}"
-  when: webmin_additional_themes
+  when: webmin_additional_themes is defined
 - name: set default webmin theme in config
   lineinfile:
     path: /etc/webmin/config
