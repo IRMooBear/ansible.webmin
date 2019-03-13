@@ -29,6 +29,8 @@
 - name: set webmin to redirect non-ssl to ssl
   lineinfile:
     path: /etc/webmin/miniserv.conf
+    regexp: '^ssl_redirect'
+    state: present
     line: ssl_redirect=1
   notify:
     - restart webmin
