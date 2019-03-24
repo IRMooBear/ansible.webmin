@@ -1,6 +1,7 @@
 ---
 # Handlers for install_webmin
 - name: restart webmin
+  become: yes
   service:
     name: webmin
     state: "{{ 'restarted' if webmin_autostart else 'stopped' }}"

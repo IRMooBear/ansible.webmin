@@ -1,5 +1,6 @@
 ---
-- name: install webmin dependencies
+- name: apt install webmin dependencies
+  become: yes
   apt:
     state: present
     name: [
@@ -16,7 +17,8 @@
   retries: 3
   delay: 10
   until: not result.failed
-- name: install webmin
+- name: apt install webmin
+  become: yes
   apt:
     deb: /usr/local/src/{{ webmin_name }}
     state: present

@@ -1,13 +1,16 @@
 ---
 - name: copy webmin ssl certificate key
+  become: yes
   copy:
     src: "{{ webmin_ssl_key }}"
     dest: /etc/webmin/miniserv.pem
+    owner: root
     group: bin
     mode: 0600
   notify:
     - restart webmin
 - name: copy webmin ssl certificate
+  become: yes
   copy:
     src: "{{ webmin_ssl_certificate }}"
     dest: /etc/webmin/miniserv.cert
@@ -15,6 +18,7 @@
   notify:
     - restart webmin
 - name: copy webmin ssl certificate CA chain
+  become: yes
   copy:
     src: "{{ webmin_ssl_ca }}"
     dest: /etc/webmin/miniserv.chain
@@ -22,6 +26,7 @@
   notify:
     - restart webmin
 - name: add ssl configuration
+  become: yes
   blockinfile:
     dest: /etc/webmin/miniserv.conf
     block: |

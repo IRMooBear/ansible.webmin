@@ -12,6 +12,7 @@
   with_items: "{{ webmin_additional_themes }}"
   when: webmin_additional_themes is defined
 - name: set default webmin theme in config
+  become: yes
   lineinfile:
     path: /etc/webmin/config
     regexp: '^theme='
@@ -20,6 +21,7 @@
     - restart webmin
   when: webmin_theme != ""
 - name: set default webmin theme in miniserv.conf
+  become: yes
   lineinfile:
     path: /etc/webmin/miniserv.conf
     regexp: '^preroot='
@@ -27,6 +29,7 @@
   notify:
     - restart webmin
 - name: set webmin to redirect non-ssl to ssl
+  become: yes
   lineinfile:
     path: /etc/webmin/miniserv.conf
     regexp: '^ssl_redirect'
@@ -35,6 +38,7 @@
   notify:
     - restart webmin
 - name: set service webmin autostart
+  become: yes
   service:
     name: webmin
     enabled: "{{ webmin_autostart }}"
