@@ -4,4 +4,4 @@
   become: yes
   service:
     name: webmin
-    state: "{{ 'restarted' if webmin_autostart else 'stopped' }}"
+    state: "{{ 'started' if webmin_autostart else 'stopped' }}"
