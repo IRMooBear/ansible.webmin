@@ -1,5 +1,5 @@
 ---
-# tasks file for install_webmin
+# tasks file for webmin
 - name: check webmin already installed
   stat:
     path: /usr/local/src/{{ webmin_name }}
@@ -42,5 +42,3 @@
   service:
     name: webmin
     enabled: "{{ webmin_autostart }}"
-  notify:
-    - restart webmin

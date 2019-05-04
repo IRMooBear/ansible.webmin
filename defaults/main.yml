@@ -1,5 +1,5 @@
 ---
-# defaults file for install_webmin
+# defaults file for webmin
 webmin_source:
   Debian:
     source: https://prdownloads.sourceforge.net/webadmin/
