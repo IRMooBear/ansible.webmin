@@ -17,8 +17,7 @@
     path: /etc/webmin/config
     regexp: '^theme='
     line: theme={{ webmin_theme }}
-  notify:
-    - restart webmin
+  notify: restart webmin
   when: webmin_theme != ""
 - name: set default webmin theme in miniserv.conf
   become: yes
@@ -26,8 +25,7 @@
     path: /etc/webmin/miniserv.conf
     regexp: '^preroot='
     line: preroot={{ webmin_theme }}
-  notify:
-    - restart webmin
+  notify: restart webmin
 - name: set webmin to redirect non-ssl to ssl
   become: yes
   lineinfile:
@@ -35,8 +33,7 @@
     regexp: '^ssl_redirect'
     state: present
     line: ssl_redirect=1
-  notify:
-    - restart webmin
+  notify: restart webmin
 - name: set service webmin autostart
   become: yes
   service:
