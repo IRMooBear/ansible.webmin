@@ -3,15 +3,15 @@
 webmin_source:
   Debian:
     source: https://prdownloads.sourceforge.net/webadmin/
-    version: "1.910"
-    name: webmin_1.910_all.deb
-    checksum: md5:8a8ab138819756ac37a75d51ee8edfe3
+    version: "1.920"
+    name: webmin_1.920_all.deb
+    checksum: md5:e4dc72962b01709ac6fdf3226cf5d779
     install_dir: /usr/share/webmin/
   RedHat:
     source: https://prdownloads.sourceforge.net/webadmin/
-    version: "1.910-1"
-    name: webmin-1.910-1.noarch.rpm
-    checksum: md5:616562ea8291958f016a783ba66b33c5
+    version: "1.920-1"
+    name: webmin-1.920-1.noarch.rpm
+    checksum: md5:030bf1cd5960c129af3358d20ab682b7
     install_dir: /usr/libexec/webmin/
 
 webmin_additional_themes:
